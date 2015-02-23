@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicTable", "DynamicTable\DynamicTable.csproj", "{BA1DD3E5-29C2-4C6D-97BE-618AFEC242AA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicChart", "DynamicChart\DynamicChart.csproj", "{53F266C0-B7D6-47D1-A8F7-01CFE83BB564}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BA1DD3E5-29C2-4C6D-97BE-618AFEC242AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA1DD3E5-29C2-4C6D-97BE-618AFEC242AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA1DD3E5-29C2-4C6D-97BE-618AFEC242AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F266C0-B7D6-47D1-A8F7-01CFE83BB564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F266C0-B7D6-47D1-A8F7-01CFE83BB564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F266C0-B7D6-47D1-A8F7-01CFE83BB564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F266C0-B7D6-47D1-A8F7-01CFE83BB564}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

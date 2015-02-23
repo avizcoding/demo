@@ -29,32 +29,31 @@ var Main;
             this._dataLoader.Run(new services.MockDataService(), "", dataReceived);
         };
         MainView.prototype.buildScreen = function () {
-            var dataTable = new sap.m.Table("dataTable");
-            this._layout.addContent(dataTable);
+            var dataChart = new sap.makit.Chart("dataChart", {
+                height: "40rem",
+                type: sap.makit.ChartType.Line,
+                showRangeSelector: false,
+                showTableView: false,
+                showTotalValue: false,
+                lineThickness: 2,
+                categoryAxis: new sap.makit.CategoryAxis({ displayLastLabel: true }),
+                category: new sap.makit.Category({ column: "episode" }),
+                values: [new sap.makit.Value({ expression: "rating", format: "number" })]
+            });
+            dataChart.setModel(this._controller.getModel());
+            this._layout.addContent(dataChart);
             this.setControlsModel();
         };
         MainView.prototype.setControlsModel = function () {
             var model = this._controller.getModel();
             this._layout.setModel(model);
-            var dataTable = this._layout.getContent()[0];
-            this.buildTable(dataTable);
+            var dataChart = this._layout.getContent()[0];
+            this.buildTable(dataChart);
         };
-        MainView.prototype.buildTable = function (table) {
-            /* Bindings */
-            table.bindAggregation("columns", "/dataStructures", function (sId, dataModel) {
-                var columnId = dataModel.getObject().field;
-                return new sap.m.Column({
-                    header: new sap.m.Text({ text: columnId })
-                });
-            });
-            table.bindItems("/data", function (index, context) {
-                var obj = context.getObject();
-                var row = new sap.m.ColumnListItem();
-                for (var k in obj) {
-                    row.addCell(new sap.m.Text({ text: obj[k] }));
-                }
-                return row;
-            });
+        MainView.prototype.buildTable = function (chart) {
+            chart.addColumn(new sap.makit.Column({ name: "episode", value: "{episode}" }));
+            chart.addColumn(new sap.makit.Column({ name: "rating", value: "{rating}" }));
+            chart.bindRows("/data");
         };
         return MainView;
     })();

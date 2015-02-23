@@ -44,37 +44,33 @@ module Main {
         }
 
         private buildScreen(): void {
-            var dataTable = new sap.m.Table("dataTable");
-            this._layout.addContent(dataTable);
+            var dataChart = new sap.makit.Chart("dataChart", {
+                height: "40rem",
+                type: sap.makit.ChartType.Line,
+                showRangeSelector: false,
+                showTableView: false,
+                showTotalValue: false,
+                lineThickness: 2,
+                categoryAxis: new sap.makit.CategoryAxis({ displayLastLabel: true }),
+                category: new sap.makit.Category({ column: "episode" }),
+                values: [new sap.makit.Value({ expression: "rating", format: "number" })]
+            });
+            dataChart.setModel(this._controller.getModel());
+            this._layout.addContent(dataChart);
             this.setControlsModel();
         }
 
         private setControlsModel(): void {
             var model = this._controller.getModel();
             this._layout.setModel(model);
-            var dataTable = this._layout.getContent()[0];
-            this.buildTable(dataTable);   
+            var dataChart = this._layout.getContent()[0];
+            this.buildTable(dataChart);   
         }
 
-        private buildTable(table: any): void {
-            /* Bindings */
-            table.bindAggregation("columns", "/dataStructures", function (sId, dataModel) {
-                var columnId = dataModel.getObject().field;
-                return new sap.m.Column({
-                    header: new sap.m.Text({ text: columnId })
-                });
-            });
-
-            table.bindItems("/data", function (index, context) {
-                var obj = context.getObject();
-                var row = new sap.m.ColumnListItem();
-
-                for (var k in obj) {
-                    row.addCell(new sap.m.Text({ text: obj[k] }));
-                }
-
-                return row;
-            });
+        private buildTable(chart: any): void {
+            chart.addColumn(new sap.makit.Column({ name: "episode", value: "{episode}" }));
+            chart.addColumn(new sap.makit.Column({ name: "rating", value: "{rating}" }));
+            chart.bindRows("/data");
         }
 
     }

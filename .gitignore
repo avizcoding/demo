@@ -2,6 +2,9 @@
 DynamicTable/resources/
 DynamicTable/bin/
 DynamicTable/obj/
+DynamicChart/resources/
+DynamicChart/bin/
+DynamicChart/obj/
 
 # Windows image file caches
 Thumbs.db
