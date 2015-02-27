@@ -1,5 +1,5 @@
 ﻿jQuery.sap.require("demo.src.infrastructure.Services.Mock.MockDataService");
-module Main {
+module MainDesktop {
 
     export class MainView {
 
@@ -12,11 +12,10 @@ module Main {
         }
 
         public getControllerName(): string {
-            return "src.content.main";
+            return "src.content.mainDesktop";
         }
 
         public createContent(controller: MainController) {
-
             var that = this;
             this._controller = controller;
 
@@ -44,7 +43,7 @@ module Main {
         }
 
         private buildScreen(): void {
-            var dataTable = new sap.m.Table("dataTable");
+            var dataTable = new sap.ui.table.Table("dataTable");
             this._layout.addContent(dataTable);
             this.setControlsModel();
         }
@@ -60,25 +59,19 @@ module Main {
             /* Bindings */
             table.bindAggregation("columns", "/dataStructures", function (sId, dataModel) {
                 var columnId = dataModel.getObject().field;
-                return new sap.m.Column({
-                    header: new sap.m.Text({ text: columnId })
+                return new sap.ui.table.Column({
+                    label: new sap.ui.commons.Label({ text: columnId }),
+                    template: new sap.ui.commons.TextView().bindProperty("text", columnId),
+                    sortProperty: columnId,
+                    filterProperty: columnId
                 });
             });
 
-            table.bindItems("/data", function (index, context) {
-                var obj = context.getObject();
-                var row = new sap.m.ColumnListItem();
-
-                for (var k in obj) {
-                    row.addCell(new sap.m.Text({ text: obj[k] }));
-                }
-
-                return row;
-            });
+            table.bindRows("/data");
         }
 
     }
 
 }
 
-sap.ui.jsview("src.content.main", new Main.MainView());
+sap.ui.jsview("src.content.mainDesktop", new MainDesktop.MainView());

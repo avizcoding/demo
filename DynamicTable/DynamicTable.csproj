@@ -5071,8 +5071,12 @@
     <TypeScriptCompile Include="scripts\typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="scripts\typings\sap.d.ts" />
     <TypeScriptCompile Include="src\bootstrapper.ts" />
-    <TypeScriptCompile Include="src\content\main.controller.ts" />
-    <TypeScriptCompile Include="src\content\main.view.ts" />
+    <TypeScriptCompile Include="src\content\mainDesktop.controller.ts" />
+    <TypeScriptCompile Include="src\content\mainPhone.controller.ts" />
+    <TypeScriptCompile Include="src\content\mainPhone.view.ts" />
+    <TypeScriptCompile Include="src\content\mainTablet.controller.ts" />
+    <TypeScriptCompile Include="src\content\mainDesktop.view.ts" />
+    <TypeScriptCompile Include="src\content\mainTablet.view.ts" />
     <TypeScriptCompile Include="src\infrastructure\Context\Context.ts" />
     <TypeScriptCompile Include="src\infrastructure\Data\DataLoader.ts" />
     <TypeScriptCompile Include="src\infrastructure\Data\IDataService.ts" />

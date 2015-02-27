@@ -1,4 +1,4 @@
-﻿module Main {
+﻿module MainPhone {
     export class MainController {
 
         private _model: any;
@@ -38,4 +38,4 @@
     }
 }
 
-sap.ui.controller("src.content.main", new Main.MainController()); 
+sap.ui.controller("src.content.mainPhone", new MainPhone.MainController()); 
